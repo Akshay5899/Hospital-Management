@@ -1,0 +1,9 @@
+{
+  "name": "hospital-management",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\" \"npm --prefix dashboard run dev\"",
+    "start": "npm run dev"
+  }
+}
