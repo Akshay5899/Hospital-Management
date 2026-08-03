@@ -47,22 +47,24 @@ const Navbar = () => {
               About Us
             </Link>
           </div>
-          {isAuthenticated ? (
-            <button className="logoutBtn btn" onClick={handleLogout}>
-              LOGOUT
+          <div className="authButtons">
+            {isAuthenticated ? (
+              <button className="logoutBtn btn" onClick={handleLogout}>
+                LOGOUT
+              </button>
+            ) : (
+              <button className="loginBtn btn" onClick={goToLogin}>
+                LOGIN
+              </button>
+            )}
+            <button className="dashboardBtn btn" onClick={() => window.open("https://hospital-management-dashboard-beta.vercel.app/", "_blank")}>
+              Dashboard
             </button>
-          ) : (
-            <button className="loginBtn btn" onClick={goToLogin}>
-              LOGIN
-            </button>
-          )}
+          </div>
         </div>
         <div className="hamburger" onClick={() => setShow(!show)}>
           <GiHamburgerMenu />
         </div>
-        <button className="dashboardBtn btn" onClick={() => window.open("https://hospital-management-dashboard-beta.vercel.app/", "_blank")}>
-          Dashboard
-        </button>
       </nav>
     </>
   );

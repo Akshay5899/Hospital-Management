@@ -488,9 +488,13 @@ nav .logoutBtn {
 nav .loginBtn {
   background: linear-gradient(135deg, black, rgb(49, 49, 49));
 }
+nav .authButtons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 nav .dashboardBtn {
   background: linear-gradient(135deg, rgb(14, 95, 215), rgb(49, 49, 49));
-  margin-left: 20px;
 }
 nav .hamburger {
   display: none;
@@ -545,12 +549,23 @@ nav svg {
   nav .navLinks .links {
     flex-direction: column;
     text-align: center;
+    gap: 15px;
   }
   nav .navLinks .links a {
     font-weight: 700;
   }
   nav .logoutBtn {
     margin-top: 20px;
+  }
+  nav .authButtons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  nav .authButtons .btn {
+    width: 100%;
+    max-width: 170px;
   }
 }
 @media (max-width: 800px) {
