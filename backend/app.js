@@ -19,9 +19,33 @@ const allowedOrigins = [
   process.env.DASHBOARD_URL,
 ].filter(Boolean);
 
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
+  const normalizedOrigin = origin.toLowerCase();
+  if (allowedOrigins.some((allowed) => allowed && normalizedOrigin === allowed.toLowerCase())) {
+    return true;
+  }
+
+  return (
+    normalizedOrigin.includes("localhost") ||
+    normalizedOrigin.includes("127.0.0.1") ||
+    normalizedOrigin.endsWith(".vercel.app") ||
+    normalizedOrigin.endsWith(".netlify.app") ||
+    normalizedOrigin.includes("onrender.com") ||
+    normalizedOrigin.includes("render.com")
+  );
+};
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (!origin || isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(null, false);
+    },
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
