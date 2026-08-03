@@ -7,7 +7,9 @@ import { Context } from "../main";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
+
+  const navigateTo = useNavigate();
 
   const handleLogout = async () => {
     await axios
@@ -17,13 +19,18 @@ const Navbar = () => {
       .then((res) => {
         toast.success(res.data.message);
         setIsAuthenticated(false);
+        setUser({});
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err.response?.data?.message || "Logout failed.");
+        setIsAuthenticated(false);
+        setUser({});
+      })
+      .finally(() => {
+        navigateTo("/login");
       });
   };
 
-  const navigateTo = useNavigate();
 
   const goToLogin = () => {
     navigateTo("/login");

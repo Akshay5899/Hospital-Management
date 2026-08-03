@@ -196,11 +196,17 @@ export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
 // Logout function for dashboard admin
 export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
+  const isProduction = process.env.NODE_ENV === "production";
+
   res
-    .status(201)
+    .status(200)
     .cookie("adminToken", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
+      maxAge: 0,
+      path: "/",
+      sameSite: isProduction ? "none" : "lax",
+      secure: isProduction,
     })
     .json({
       success: true,
@@ -210,11 +216,17 @@ export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
 
 // Logout function for frontend patient
 export const logoutPatient = catchAsyncErrors(async (req, res, next) => {
+  const isProduction = process.env.NODE_ENV === "production";
+
   res
-    .status(201)
+    .status(200)
     .cookie("patientToken", "", {
       httpOnly: true,
       expires: new Date(Date.now()),
+      maxAge: 0,
+      path: "/",
+      sameSite: isProduction ? "none" : "lax",
+      secure: isProduction,
     })
     .json({
       success: true,
