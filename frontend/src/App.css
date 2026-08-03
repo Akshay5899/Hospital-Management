@@ -488,6 +488,10 @@ nav .logoutBtn {
 nav .loginBtn {
   background: linear-gradient(135deg, black, rgb(49, 49, 49));
 }
+nav .dashboardBtn {
+  background: linear-gradient(135deg, rgb(14, 95, 215), rgb(49, 49, 49));
+  margin-left: 20px;
+}
 nav .hamburger {
   display: none;
 }

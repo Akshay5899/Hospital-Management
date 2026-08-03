@@ -60,6 +60,9 @@ const Navbar = () => {
         <div className="hamburger" onClick={() => setShow(!show)}>
           <GiHamburgerMenu />
         </div>
+        <button className="dashboardBtn btn" onClick={() => window.open("https://hospital-management-dashboard-beta.vercel.app/", "_blank")}>
+          Dashboard
+        </button>
       </nav>
     </>
   );
