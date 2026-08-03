@@ -15,7 +15,7 @@ export const dbConnection = () => {
 
   mongoose
     .connect(process.env.MONGO_URI, {
-      dbName: "hospital",
+      dbName: "MERN-Hospital-Management",
     })
     .then(() => {
       console.log("Connected to database!");
